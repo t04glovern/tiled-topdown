@@ -32,7 +32,8 @@ TopDownGame.Game.prototype = {
         this.game.physics.arcade.enable(this.player);
 
         // player animations
-        this.player.animations.add('move');
+        this.player.animations.add('right', [0, 1, 2], 7, true);
+        this.player.animations.add('left', [4, 5, 6], 7, true);
 
         // the camera will follow the player in the world
         this.game.camera.follow(this.player);
@@ -103,60 +104,60 @@ TopDownGame.Game.prototype = {
 
         if (this.cursors.up.isDown) {
             this.player.body.velocity.y -= 50;
-            this.player.animations.play('move', 10, true);
+            this.player.animations.play('left');
 
             if (this.cursors.left.isDown) {
                 this.player.body.velocity.x -= 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('left');
             }
             else if (this.cursors.right.isDown) {
                 this.player.body.velocity.x += 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('right');
             }
         }
         else if (this.cursors.down.isDown) {
             this.player.body.velocity.y += 50;
-            this.player.animations.play('move', 10, true);
+            this.player.animations.play('right');
 
             if (this.cursors.left.isDown) {
                 this.player.body.velocity.x -= 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('left');
             }
             else if (this.cursors.right.isDown) {
                 this.player.body.velocity.x += 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('right');
             }
         }
         else if (this.cursors.left.isDown) {
             this.player.body.velocity.x -= 50;
-            this.player.animations.play('move', 10, true);
+            this.player.animations.play('left');
 
             if (this.cursors.down.isDown) {
                 this.player.body.velocity.y += 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('left');
             }
             else if (this.cursors.up.isDown) {
                 this.player.body.velocity.y -= 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('left');
             }
         }
         else if (this.cursors.right.isDown) {
             this.player.body.velocity.x += 50;
-            this.player.animations.play('move', 10, true);
+            this.player.animations.play('right');
 
             if (this.cursors.down.isDown) {
                 this.player.body.velocity.y += 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('right');
             }
             else if (this.cursors.up.isDown) {
                 this.player.body.velocity.y -= 50;
-                this.player.animations.play('move', 10, true);
+                this.player.animations.play('right');
             }
         }
         else {
             // stand still
             this.player.animations.stop();
-            this.player.frame = 0;
+            this.player.frame = 3;
         }
     },
 
