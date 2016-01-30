@@ -6,4 +6,6 @@ A top down dungeon crawler written with the [Phaser](http://phaser.io/) javascri
 
 ## Instructions
 
-Clone the repository and use something like [Caddy](https://caddyserver.com/) to spin up a webserver to host index.html
+Clone the repository and use something like [Caddy](https://caddyserver.com/) to spin up a webserver to host index.html.
+
+At the moment this game is extremely simple and is only meant as a learning resource :smile:
