@@ -31,12 +31,15 @@ TopDownGame.Game.prototype = {
         this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
         this.game.physics.arcade.enable(this.player);
 
+        // player animations
+        this.player.animations.add('move');
+
         // the camera will follow the player in the world
         this.game.camera.follow(this.player);
 
         // move player with cursor keys
         this.cursors = this.game.input.keyboard.createCursorKeys();
-        
+
     },
 
     createItems: function() {
@@ -100,15 +103,60 @@ TopDownGame.Game.prototype = {
 
         if (this.cursors.up.isDown) {
             this.player.body.velocity.y -= 50;
+            this.player.animations.play('move', 10, true);
+
+            if (this.cursors.left.isDown) {
+                this.player.body.velocity.x -= 50;
+                this.player.animations.play('move', 10, true);
+            }
+            else if (this.cursors.right.isDown) {
+                this.player.body.velocity.x += 50;
+                this.player.animations.play('move', 10, true);
+            }
         }
         else if (this.cursors.down.isDown) {
             this.player.body.velocity.y += 50;
+            this.player.animations.play('move', 10, true);
+
+            if (this.cursors.left.isDown) {
+                this.player.body.velocity.x -= 50;
+                this.player.animations.play('move', 10, true);
+            }
+            else if (this.cursors.right.isDown) {
+                this.player.body.velocity.x += 50;
+                this.player.animations.play('move', 10, true);
+            }
         }
-        if (this.cursors.left.isDown) {
+        else if (this.cursors.left.isDown) {
             this.player.body.velocity.x -= 50;
+            this.player.animations.play('move', 10, true);
+
+            if (this.cursors.down.isDown) {
+                this.player.body.velocity.y += 50;
+                this.player.animations.play('move', 10, true);
+            }
+            else if (this.cursors.up.isDown) {
+                this.player.body.velocity.y -= 50;
+                this.player.animations.play('move', 10, true);
+            }
         }
         else if (this.cursors.right.isDown) {
             this.player.body.velocity.x += 50;
+            this.player.animations.play('move', 10, true);
+
+            if (this.cursors.down.isDown) {
+                this.player.body.velocity.y += 50;
+                this.player.animations.play('move', 10, true);
+            }
+            else if (this.cursors.up.isDown) {
+                this.player.body.velocity.y -= 50;
+                this.player.animations.play('move', 10, true);
+            }
+        }
+        else {
+            // stand still
+            this.player.animations.stop();
+            this.player.frame = 0;
         }
     },
 
